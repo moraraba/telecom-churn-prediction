@@ -4,8 +4,6 @@ Predicting which customers of **Simu Connect**, a fictional telecom operator, ar
 
 Python · pandas · scikit-learn · SciPy · matplotlib
 
-Project brief: [DSEAfrica Data Lab: Telecom Customer Churn Prediction in Python](https://www.dataeast.africa/projects/telecom-customer-churn-prediction-in-python)
-
 ## Key findings
 
 | | |
@@ -43,37 +41,3 @@ Accuracy is misleading here: predicting that nobody leaves already scores 73.5%.
 Spend the retention budget on the **High** band first, then Medium, and stop the blanket discount for the Low band, where about 90% of customers stay anyway. Test a **contract-upgrade offer** (a discount or free security/tech-support add-on in exchange for a one-year contract) against a random control group, so the result measures customers actually saved.
 
 Full note for the Head of Customer Retention: [`reports/retention_note.md`](reports/retention_note.md)
-
-## Repository structure
-
-```
-├── data/
-│   └── telco-customers.csv        # 7,043 customers × 21 columns
-├── notebooks/
-│   └── churn_analysis.ipynb       # full analysis, runs top to bottom
-├── figures/                       # charts saved by the notebook
-├── reports/
-│   ├── retention_note.md          # one-page note for the Head of Retention
-│   └── test_set_risk_scores.csv   # test customers ranked by churn probability
-├── src/
-│   ├── notebook_source.py         # notebook source (cells marked with # %%)
-│   └── build_notebook.py          # rebuilds and executes the notebook
-├── requirements.txt
-└── README.md
-```
-
-## How to run
-
-```bash
-git clone https://github.com/<your-username>/telecom-churn-prediction.git
-cd telecom-churn-prediction
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-jupyter notebook notebooks/churn_analysis.ipynb
-```
-
-Run all cells. The notebook finds `data/` whether it is started from the repo root or from `notebooks/`. To regenerate the notebook from the source script instead: `python src/build_notebook.py`.
-
-## Data
-
-IBM [Telco Customer Churn sample dataset](https://github.com/IBM/telco-customer-churn-on-icp4d), Apache License 2.0. The customers are fictional and charges are in US dollars. The DSEAfrica version renames the columns to snake_case (for example `customerID` → `customer_id`, `tenure` → `tenure_months`). It is a single monthly snapshot with no usage or complaint history, which limits what the model can explain. See the limits section of the retention note.
